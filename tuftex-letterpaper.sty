@@ -1,0 +1,48 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{tufte2-letterpaper}[2023-06-20 package tuftex-letterpaper]
+
+% preliminary declarations
+% set page size and margins for letter only
+\RequirePackage[letterpaper,left=1in,top=1in,headsep=2\baselineskip,textwidth=26pc,marginparsep=2pc,marginparwidth=12pc,textheight=44\baselineskip,headheight=\baselineskip]{geometry}
+\RequirePackage{ragged2e}
+
+% package options - nope not implementing them!
+
+% package declarations
+% Set some margin lengths, from tufte-common.def
+\setlength\leftmargini   {1pc}
+\setlength\leftmarginii  {1pc}
+\setlength\leftmarginiii {1pc}
+\setlength\leftmarginiv  {1pc}
+\setlength\leftmarginv   {1pc}
+\setlength\leftmarginvi  {1pc}
+\setlength\labelsep      {.5pc}
+\setlength\labelwidth    {\leftmargini}
+\addtolength\labelwidth{-\labelsep}
+
+% \RaggedRight allows hyphenation, from tufte-common.def
+\setlength{\parindent}{1.0pc}%
+\setlength{\parskip}{0pt}%
+\setlength{\RaggedRightRightskip}{\z@ plus 0.08\hsize}
+
+% adapted from tufte-common.def
+\NewDocumentCommand{\tuftex@ResetPar}{}{%
+  \setlength{\RaggedRightParindent}{1.0pc}%
+  \setlength{\JustifyingParindent}{1.0pc}%
+  \setlength{\parindent}{1pc}%
+  \setlength{\parskip}{0pt}%
+} %\tuftex@ResetPar
+\tuftex@ResetPar
+
+% Paragraph indentation and separation for marginal text
+% adapted from tufte-common.def
+\NewDocumentCommand{\tuftex@MarginPar}{}{%
+  \setlength{\RaggedRightParindent}{0.5pc}%
+  \setlength{\JustifyingParindent}{0.5pc}%
+  \setlength{\parindent}{0.5pc}%
+  \setlength{\parskip}{0pt}%
+} %\tuftex@MarginPar
+
+% do it!
+\RaggedRight
+
