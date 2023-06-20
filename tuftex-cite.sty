@@ -1,0 +1,29 @@
+\ProvidesPackage{tufte2-cite}[2023-06-19 package tufte2-cite]
+
+\RequirePackage{sidenotes} 
+% although this should already be loaded by tufte2-sidenotes
+% let's be explicit about our dependencies shall we? 
+
+% need to use natbib
+\RequirePackage[round]{natbib}
+\RequirePackage{bibentry}
+\nobibliography*
+\providecommand{\doi}[1]{\textsc{doi:} #1}
+
+% redefine cite to call sidenote
+\RequirePackage{pgffor}
+\renewcommand{\cite}[1]{%
+\nocite{#1}%
+\sidenote{\raggedright\foreach [count=\ni] \entry in {#1}
+{\ifnum\ni=1%
+\bibentry{\entry}%
+\else%
+; \bibentry{\entry}%
+\fi
+}
+}
+}
+% TODO 
+% fix spacing
+% also entry1; entry2; and entry3
+

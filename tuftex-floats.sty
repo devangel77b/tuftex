@@ -1,0 +1,36 @@
+\ProvidesPackage{tufte2-floats}[2023-06-19 package tufte2-floats]
+
+\RequirePackage{caption}
+\RequirePackage{sidenotes}
+
+% Tighten up space between displays (e.g., a figure or table) and make symmetric
+\setlength\abovedisplayskip{6pt plus 2pt minus 4pt}
+\setlength\belowdisplayskip{6pt plus 2pt minus 4pt}
+
+
+
+
+% figure
+\DeclareCaptionFormat{tufte2figure}{\marginnote{f-#1#2#3}}
+\RenewDocumentEnvironment{figure}{O{\fps@figure}}
+	{\captionsetup{format=tufte2figure,
+		font=footnotesize,skip=0pt,justification=raggedright}
+	\@float{figure}[#1]f-pre}%
+	{f-post\end@float}%
+
+% figure*
+\DeclareCaptionFormat{tufte2widefigure}{\marginnote{fstar-#1#2#3}}
+\RenewDocumentEnvironment{figure*}{O{\fps@figure}}
+	{\captionsetup{format=tufte2widefigure,
+		font=footnotesize,skip=0pt,justification=raggedright}
+	\@dblfloat{figure}[#1]fstar-pre}%
+	{fstar-post\end@dblfloat}%
+
+% marginfigure
+\RenewDocumentEnvironment{marginfigure}{}
+{mf-pre}
+{mf-post}
+
+% table
+% table*
+% margintable
