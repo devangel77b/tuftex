@@ -1,9 +1,7 @@
 \documentclass{article}
 % This test checks that the real simple basic stuff works.
-% Namely newthought, maketitle, sectioning, fonts, letterpaper. 
-% They should also work under tex4ebook.
-
-% TODO: letter paper sizes and lengths etc.
+% Namely newthought, maketitle, sectioning, fonts, letterpaper,
+% and fullwidth. They should also work under tex4ebook.
 
 % Seems to work 2023-06-20
 
@@ -45,5 +43,9 @@
 
 \subsection{Segundo}
 \lipsum[2][3]
+
+\begin{fullwidth}
+\small\itshape\lipsum[1]
+\end{fullwidth}
 
 \end{document}

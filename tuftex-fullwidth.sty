@@ -1,0 +1,44 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{tuftex-fullwidth}[2023-06-20 package tuftex-fullwidth]
+
+\RequirePackage[strict]{changepage}
+% uses adjustwidth from changepage package
+
+% Compute lengths used for full-width displays
+\newlength{\@tuftex@overhang}
+% used by the fullwidth environment and the running heads
+\newlength{\@tuftex@fullwidth}
+\newlength{\@tuftex@caption@fill}
+
+\NewDocumentCommand{\@tuftex@Recalculate}{}{%
+  \setlength{\@tuftex@overhang}{\marginparwidth}
+  \addtolength{\@tuftex@overhang}{\marginparsep}
+
+  \setlength{\@tuftex@fullwidth}{\textwidth}
+  \addtolength{\@tuftex@fullwidth}{\marginparsep}
+  \addtolength{\@tuftex@fullwidth}{\marginparwidth}
+
+  \setlength{\@tuftex@caption@fill}{\textwidth}
+  \addtolength{\@tuftex@caption@fill}{\marginparsep}
+}
+
+\AtBeginDocument{\@tuftex@Recalculate}
+
+% from original tufte-common.def
+% Full-page-width area
+%
+%\newenvironment{fullwidth}
+%  {\ifthenelse{\boolean{@tufte@symmetric}}%
+%     {\ifthenelse{\boolean{@tufte@changepage}}{\begin{adjustwidth*}{}{-\@tufte@overhang}}{\begin{adjustwidth}[]{}{-\@tufte@overhang}}}%
+%     {\begin{adjustwidth}{}{-\@tufte@overhang}}%
+%  }%
+%  {\ifthenelse{\boolean{@tufte@symmetric}}%
+%    {\ifthenelse{\boolean{@tufte@changepage}}{\end{adjustwidth*}}{\end{adjustwidth}}}%
+%    {\end{adjustwidth}}%
+%  }
+
+\NewDocumentEnvironment{fullwidth}{}%
+{\begin{adjustwidth}{}{-\@tuftex@overhang}}%
+{\end{adjustwidth}}
+
+
