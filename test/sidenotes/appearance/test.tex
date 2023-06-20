@@ -1,0 +1,27 @@
+\documentclass{article}
+% test/sidenotes/appearance/test.tex
+% This test checks that tuftex-sidenotes implementation works ok
+% e.g. thanks, footnote, sidenote, marginnote. 
+% should appear the same as the original tufte-handout
+
+\title{/test/sidenotes/appearance/test.tex}
+\author{D.~Evangelista\thanks{\texttt{thanks} should show up as a numbered sidenote.}}
+\date{\today}
+
+\usepackage{tuftex-handout}
+%\usepackage{tex4ebook}
+\usepackage{lipsum}
+
+\begin{document}
+\maketitle
+
+\section{\texttt{footnote}}
+\lipsum[1][1-2]\footnote{\texttt{footnote} should show up as a numbered sidenote.}
+
+\section{\texttt{sidenote}}
+\lipsum[2][1-2]\sidenote{\texttt{sidenote} should show up as a numbered sidenote.}
+
+\section{\texttt{marginnote}}
+\lipsum[3][1-2]\sidenote{\texttt{marginnote} should show up without numbers.}
+
+\end{document}

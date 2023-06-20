@@ -4,9 +4,17 @@
 % Example logging
 %\PackageInfo{tufte2-handout}{Loading top level tufte2-handout package}
 
-\RequirePackage{tuftex-newthought}
-\RequirePackage{tuftex-maketitle}
-\RequirePackage{tuftex-sectioning}
-\RequirePackage{tuftex-fonts}
-\RequirePackage{tuftex-letterpaper}
-\RequirePackage{tuftex-fullwidth}
+% these work
+\RequirePackage{tuftex-newthought}  % newthought command
+\RequirePackage{tuftex-maketitle}   % maketitle command
+\RequirePackage{tuftex-sectioning}  % sectioning formats
+\RequirePackage{tuftex-fonts}       % tufte fonts and sizes
+\RequirePackage{tuftex-letterpaper} % letter paper sizes, lengths, etc
+\RequirePackage{tuftex-fullwidth}   % fullwidth environment
+
+% testing
+\RequirePackage{tuftex-sidenotes}   % thanks, footnote, sidenote, marginnote
+
+% TODO
+% cite - citations with bibtex
+% float - floats like figure, table, figure*, table*, marginfigure

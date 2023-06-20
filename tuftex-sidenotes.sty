@@ -1,0 +1,35 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{tuftex-sidenotes}[2023-06-20 package tuftex-sidenotes]
+
+\RequirePackage{sidenotes}
+\RequirePackage{tuftex-letterpaper}
+%\RequirePackage{xparse} % I don't think we need this?
+% we will use the sidenotes package to implement sidenote 
+% and marginnote
+
+% define fonts etc for sidenote use
+% TODO right now it is hard coded for ragged right need to fix this
+\NewDocumentCommand{\@tuftex@marginfont}{}{%
+\normalfont\footnotesize\RaggedRight\@tuftex@MarginPar\unskip\ignorespaces%
+} %\@tuftex@marginfont
+
+% set marginpar font for use in sidenote=marginpar
+%\let\oldmarginpar\marginpar
+\NewCommandCopy{\@tuftex@old@marginpar}{\marginpar}
+
+\RenewDocumentCommand{\marginpar}{om}{%
+  \IfNoValueTF{#1}%
+    {\@tuftex@old@marginpar{\@tuftex@marginfont #2}}
+    {\@tuftex@old@marginpar[\@tuftex@marginfont #1]{\@tuftex@marginfont #2}}
+} %\marginpar redefined
+
+% also set marginnote to use marginpar font
+%\renewcommand*{\marginfont}{\tufte@marginfont}
+\RenewDocumentCommand{\marginfont}{}{\@tuftex@marginfont}
+
+% redefine footnote to use sidenote
+\RenewDocumentCommand{\footnote}{m}{\sidenote{\unskip #1}}
+
+% redefine thanks to use sidenote
+\RenewDocumentCommand{\thanks}{m}{\sidenote{\unskip #1}}
+
