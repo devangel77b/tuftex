@@ -1,0 +1,81 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{tuftex-sectioning}[2023-06-20 package tuftex-sectioning]
+
+% package preliminary declarations
+\RequirePackage{titlesec,titletoc}
+
+% package options: none, not doing symmetric option
+% package declarations
+
+% From original tufte-common.def
+% Turn off section numbering
+\setcounter{secnumdepth}{-1}
+
+% From original tufte-common.def
+% Make Tuftian-style section headings and TOC formatting
+%\titleformat{\chapter}%
+%  [display]% shape
+%  {\relax\ifthenelse{\NOT\boolean{@tufte@symmetric}}{\begin{fullwidth}}{}}% format applied to label+text
+%  {\itshape\huge\thechapter}% label
+%  {0pt}% horizontal separation between label and title body
+%  {\huge\rmfamily\itshape}% before the title body
+%  [\ifthenelse{\NOT\boolean{@tufte@symmetric}}{\end{fullwidth}}{}]% after the title body
+\titleformat{\chapter}%
+  [display]% shape
+  {\relax\begin{fullwidth}}% format applied to label+text
+  {\itshape\huge\thechapter}% label
+  {0pt}% horizontal separation between label and title body
+  {\huge\rmfamily\itshape}% before the title body
+  [\end{fullwidth}]% after the title body
+
+\titleformat{\section}%
+  [hang]% shape
+  {\normalfont\Large\itshape}% format applied to label+text
+  {\thesection}% label
+  {1em}% horizontal separation between label and title body
+  {}% before the title body
+  []% after the title body
+
+\titleformat{\subsection}%
+  [hang]% shape
+  {\normalfont\large\itshape}% format applied to label+text
+  {\thesubsection}% label
+  {1em}% horizontal separation between label and title body
+  {}% before the title body
+  []% after the title body
+
+\titleformat{\paragraph}%
+  [runin]% shape
+  {\normalfont\itshape}% format applied to label+text
+  {\theparagraph}% label
+  {1em}% horizontal separation between label and title body
+  {}% before the title body
+  []% after the title body
+
+\titlespacing*{\chapter}{0pt}{50pt}{40pt}
+\titlespacing*{\section}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+\titlespacing*{\subsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus.2ex}
+
+% Subsubsection and following section headings shouldn't be used.
+% See Bringhurst's _The Elements of Typography_, section 4.2.2.
+\RenewDocumentCommand{\subsubsection}{}{%
+\PackageError{tuftex-sectioning}{\string\subsubsection is undefined by this class.
+    See Robert Bringhurst's _The Elements of 
+    Typographic Style_, section 4.2.2.
+    \string\subsubsection was used}
+    {From Bringhurst's _The Elements of Typographic Style_, section 4.2.2: Use as 
+    many levels of headings as you need, no more and no fewer.  Also see the many 
+    related threads on Ask E.T. at http://www.edwardtufte.com/.}
+}
+
+\RenewDocumentCommand{\subparagraph}{}{%
+\PackageError{tuftex-sectioning}{\string\subparagraph is undefined by this class.%
+    See Robert Bringhurst's _The Elements of 
+    Typographic Style_, section 4.2.2.
+    \string\subparagraph was used}
+    {From Bringhurst's _The Elements of Typographic Style_, section 4.2.2: Use as 
+    many levels of headings as you need, no more and no fewer.  Also see the many 
+    related threads on Ask E.T. at http://www.edwardtufte.com/.}
+}
+
+% expose to outside world

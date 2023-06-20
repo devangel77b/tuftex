@@ -1,0 +1,16 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{tuftex-newthought}[2023-06-20 package tuftex-newthought]
+
+% package preliminary declarations
+\RequirePackage{tuftex-tuftebreak}
+
+% package options
+% no options
+
+% package declarations
+\NewDocumentCommand{\tuftex@NewThought}{m}{%
+\tuftex@TufteBreak\noindent\textsc{#1}%
+} %\tuftex@NewThought
+
+% exposed to outside world with legacy name
+\NewCommandCopy{\newthought}{\tuftex@NewThought}

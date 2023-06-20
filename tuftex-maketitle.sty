@@ -1,0 +1,53 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{tuftex-maketitle}[2023-06-20 package tuftex-maketitle]
+
+% package preliminary declarations
+\RequirePackage{tuftex-tuftebreak}
+
+% package options: none - not implementing sfsidenotes
+
+% package declarations
+% From the original tufte-common.def
+%\renewcommand{\maketitle}{%
+%  \newpage
+%  \global\@topnum\z@% prevent floats from being placed at the top of the page
+%  \begingroup
+%    \setlength{\parindent}{0pt}%
+%    \setlength{\parskip}{4pt}%
+%    \let\@@title\@empty
+%    \let\@@author\@empty
+%    \let\@@date\@empty
+%    \ifthenelse{\boolean{@tufte@sfsidenotes}}{%
+%      \gdef\@@title{\sffamily\LARGE\allcaps{\@title}\par}%
+%      \gdef\@@author{\sffamily\Large\allcaps{\@author}\par}%
+%      \gdef\@@date{\sffamily\Large\allcaps{\@date}\par}%
+%    }{%
+%      \gdef\@@title{\LARGE\itshape\@title\par}%
+%      \gdef\@@author{\Large\itshape\@author\par}%
+%      \gdef\@@date{\Large\itshape\@date\par}%
+%    }%
+%    \@@title
+%    \@@author
+%    \@@date
+%  \endgroup
+%  \thispagestyle{plain}% suppress the running head
+%  \tuftebreak% add some space before the text begins
+%  \@afterindentfalse\@afterheading% suppress indentation of the next paragraph
+%}
+\NewDocumentCommand{\tuftex@MakeTitle}{}{
+\clearpage % require user to do floats with [hbp] to not be on page 1
+\begingroup
+\setlength{\parindent}{0pt}%
+\setlength{\parskip}{4pt}%
+\LARGE\itshape\@title\par
+\Large\itshape\@author\par
+\Large\itshape\@date\par
+\endgroup
+\thispagestyle{plain}% suppress the running head
+\tuftex@TufteBreak% add some space before the text begins
+\@afterindentfalse\@afterheading% suppress indentation of the next paragraph
+}
+
+% Expose to outside world with legacy command name
+\RenewDocumentCommand{\maketitle}{}{\tuftex@MakeTitle}
+

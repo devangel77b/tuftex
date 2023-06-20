@@ -1,0 +1,58 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{tuftex-fonts}[2023-06-20 package tuftex-fonts]
+
+
+% Set the font sizes and baselines to match Tufte's books
+\RenewDocumentCommand{\normalsize}{}{%
+   \@setfontsize\normalsize\@xpt{14}%
+   \abovedisplayskip 10\p@ \@plus2\p@ \@minus5\p@
+   \abovedisplayshortskip \z@ \@plus3\p@
+   \belowdisplayshortskip 6\p@ \@plus3\p@ \@minus3\p@
+   \belowdisplayskip \abovedisplayskip
+   \let\@listi\@listI}
+\setlength{\normalbaselineskip}{14pt}
+\normalsize
+\RenewDocumentCommand{\small}{}{%
+   \@setfontsize\small\@ixpt{12}%
+   \abovedisplayskip 8.5\p@ \@plus3\p@ \@minus4\p@
+   \abovedisplayshortskip \z@ \@plus2\p@
+   \belowdisplayshortskip 4\p@ \@plus2\p@ \@minus2\p@
+   \def\@listi{\leftmargin\leftmargini
+               \topsep 4\p@ \@plus2\p@ \@minus2\p@
+               \parsep 2\p@ \@plus\p@ \@minus\p@
+               \itemsep \parsep}%
+   \belowdisplayskip \abovedisplayskip
+}
+\RenewDocumentCommand{\footnotesize}{}{%
+   \@setfontsize\footnotesize\@viiipt{10}%
+   \abovedisplayskip 6\p@ \@plus2\p@ \@minus4\p@
+   \abovedisplayshortskip \z@ \@plus\p@
+   \belowdisplayshortskip 3\p@ \@plus\p@ \@minus2\p@
+   \def\@listi{\leftmargin\leftmargini
+               \topsep 3\p@ \@plus\p@ \@minus\p@
+               \parsep 2\p@ \@plus\p@ \@minus\p@
+               \itemsep \parsep}%
+   \belowdisplayskip \abovedisplayskip
+}
+\RenewDocumentCommand{\scriptsize}{}{\@setfontsize\scriptsize\@viipt\@viiipt}
+\RenewDocumentCommand{\tiny}{}{\@setfontsize\tiny\@vpt\@vipt}
+\RenewDocumentCommand{\large}{}{\@setfontsize\large\@xipt{15}}
+\RenewDocumentCommand{\Large}{}{\@setfontsize\Large\@xiipt{16}}
+\RenewDocumentCommand{\LARGE}{}{\@setfontsize\LARGE\@xivpt{18}}
+\RenewDocumentCommand{\huge}{}{\@setfontsize\huge\@xxpt{30}}
+\RenewDocumentCommand{\Huge}{}{\@setfontsize\Huge{24}{36}}
+
+\IfFileExists{mathpazo.sty}
+{\RequirePackage[osf,sc]{mathpazo}}
+{\PackageError{tuftex-fonts}{Requires mathpazo}{Requires mathpazo}}
+
+\IfFileExists{helvet.sty}
+{\RequirePackage[scaled=0.90]{helvet}}
+{\PackageError{tuftex-fonts}{Requires helvet}{Requires helvet}}
+
+\IfFileExists{beramono.sty}
+{\RequirePackage[scaled=0.85]{beramono}}
+{\PackageError{tuftex-fonts}{Requires beramo}{Requires beramono}}
+
+\RequirePackage[T1]{fontenc}
+\RequirePackage{textcomp}
