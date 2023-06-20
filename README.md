@@ -19,6 +19,7 @@ Top level dependencies in Latex so far:
 * mathpazo, helvet, beramono, fontenc, textcomp
 * caption
 * natbib
+* bibentry
 * pgffor
 
 ## Contributors

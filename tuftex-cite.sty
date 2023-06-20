@@ -1,29 +1,32 @@
-\ProvidesPackage{tufte2-cite}[2023-06-19 package tufte2-cite]
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{tuftex-cite}[2023-06-20 package tuftex-cite]
 
-\RequirePackage{sidenotes} 
+% package preliminary declarations
 % although this should already be loaded by tufte2-sidenotes
 % let's be explicit about our dependencies shall we? 
-
-% need to use natbib
-\RequirePackage[round]{natbib}
+\RequirePackage{sidenotes} 
+\RequirePackage{pgffor} % to use \foreach
+\RequirePackage[round]{natbib} % natbib
 \RequirePackage{bibentry}
-\nobibliography*
-\providecommand{\doi}[1]{\textsc{doi:} #1}
+\nobibliography* % do this so i can later use bibentries
+
+% package options: none so far
+
+% other package declarations
+\ProvideDocumentCommand{\doi}{m}{\textsc{doi:} #1}
 
 % redefine cite to call sidenote
-\RequirePackage{pgffor}
-\renewcommand{\cite}[1]{%
+\RenewDocumentCommand{\cite}{m}{%
 \nocite{#1}%
 \sidenote{\raggedright\foreach [count=\ni] \entry in {#1}
 {\ifnum\ni=1%
 \bibentry{\entry}%
 \else%
 ; \bibentry{\entry}%
-\fi
-}
-}
-}
+\fi}} %\sidenote
+} %\cite
+
 % TODO 
 % fix spacing
-% also entry1; entry2; and entry3
+% also entry1; entry2; and entry3 % probably wontfix
 
