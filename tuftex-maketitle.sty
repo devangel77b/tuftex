@@ -34,7 +34,7 @@
 %  \tuftebreak% add some space before the text begins
 %  \@afterindentfalse\@afterheading% suppress indentation of the next paragraph
 %}
-\NewDocumentCommand{\tuftex@MakeTitle}{}{
+\NewDocumentCommand{\@tuftex@MakeTitle}{}{
 \clearpage % require user to do floats with [hbp] to not be on page 1
 \begingroup
 \setlength{\parindent}{0pt}%
@@ -44,10 +44,10 @@
 \Large\itshape\@date\par
 \endgroup
 \thispagestyle{plain}% suppress the running head
-\tuftex@TufteBreak% add some space before the text begins
+\@tuftex@TufteBreak% add some space before the text begins
 \@afterindentfalse\@afterheading% suppress indentation of the next paragraph
 }
 
 % Expose to outside world with legacy command name
-\RenewDocumentCommand{\maketitle}{}{\tuftex@MakeTitle}
+\RenewDocumentCommand{\maketitle}{}{\@tuftex@MakeTitle}
 

@@ -8,9 +8,9 @@
 % no options
 
 % package declarations
-\NewDocumentCommand{\tuftex@NewThought}{m}{%
-\tuftex@TufteBreak\noindent\textsc{#1}%
+\NewDocumentCommand{\@tuftex@NewThought}{m}{%
+\@tuftex@TufteBreak\noindent\textsc{#1}%
 } %\tuftex@NewThought
 
 % exposed to outside world with legacy name
-\NewCommandCopy{\newthought}{\tuftex@NewThought}
+\NewCommandCopy{\newthought}{\@tuftex@NewThought}

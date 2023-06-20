@@ -9,19 +9,19 @@
 % From the original tufte-common.def:
 %\newskip\tufteskipamount
 %\tufteskipamount=1.0\baselineskip plus 0.5ex minus 0.2ex
-\newlength\tuftex@tufteskipamount
-\setlength{\tuftex@tufteskipamount}{1.0\baselineskip plus 0.5ex minus 0.2ex}
+\newlength\@tuftex@tufteskipamount
+\setlength{\@tuftex@tufteskipamount}{1.0\baselineskip plus 0.5ex minus 0.2ex}
 
 % From the original tufte-common.def
 %\newcommand{\tuftebreak}{\par\ifdim\lastskip<\tufteskipamount
 %  \removelastskip\penalty-100\tufteskip\fi}
-\NewDocumentCommand{\tuftex@TufteBreak}{}{\par\ifdim\lastskip<\tuftex@tufteskipamount
-  \removelastskip\penalty-100\tuftex@TufteSkip\fi}
+\NewDocumentCommand{\@tuftex@TufteBreak}{}{\par\ifdim\lastskip<\@tuftex@tufteskipamount
+  \removelastskip\penalty-100\@tuftex@TufteSkip\fi}
 
 % From the original tufte-common.def
 %\newcommand{\tufteskip}{\vspace\tufteskipamount}
-\NewDocumentCommand{\tuftex@TufteSkip}{}{\vspace\tuftex@tufteskipamount}
+\NewDocumentCommand{\@tuftex@TufteSkip}{}{\vspace\@tuftex@tufteskipamount}
 
 
 % expose to outside world with legacy name
-\NewCommandCopy{\tuftebreak}{\tuftex@TufteBreak}
+\NewCommandCopy{\tuftebreak}{\@tuftex@TufteBreak}

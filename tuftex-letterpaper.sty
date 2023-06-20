@@ -26,22 +26,22 @@
 \setlength{\RaggedRightRightskip}{\z@ plus 0.08\hsize}
 
 % adapted from tufte-common.def
-\NewDocumentCommand{\tuftex@ResetPar}{}{%
+\NewDocumentCommand{\@tuftex@ResetPar}{}{%
   \setlength{\RaggedRightParindent}{1.0pc}%
   \setlength{\JustifyingParindent}{1.0pc}%
   \setlength{\parindent}{1pc}%
   \setlength{\parskip}{0pt}%
-} %\tuftex@ResetPar
-\tuftex@ResetPar
+} %\@tuftex@ResetPar
+\@tuftex@ResetPar
 
 % Paragraph indentation and separation for marginal text
 % adapted from tufte-common.def
-\NewDocumentCommand{\tuftex@MarginPar}{}{%
+\NewDocumentCommand{\@tuftex@MarginPar}{}{%
   \setlength{\RaggedRightParindent}{0.5pc}%
   \setlength{\JustifyingParindent}{0.5pc}%
   \setlength{\parindent}{0.5pc}%
   \setlength{\parskip}{0pt}%
-} %\tuftex@MarginPar
+} %\@tuftex@MarginPar
 
 % do it!
 \RaggedRight
