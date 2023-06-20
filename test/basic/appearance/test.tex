@@ -1,0 +1,50 @@
+\documentclass{article}
+% basic/appearance/test.tex
+% This test checks that the real simple basic stuff works.
+% Namely newthought, maketitle, sectioning, fonts, letterpaper,
+% and fullwidth. 
+
+% Should match the output of test-theirs. Yup. 
+
+% Seems to work 2023-06-20
+
+\title{Testing}
+\author{Dennis Evangelista}
+\date{\today}
+
+\usepackage{tuftex-handout}
+\usepackage{tex4ebook}
+\usepackage{lipsum}
+
+\begin{document}
+\maketitle
+
+\newthought{Let us begin} at the beginning. % works
+
+\section{Hello world}
+\lipsum[1][1]
+
+\subsection{First}
+\lipsum[1][2]
+
+\subsection{Second}
+\lipsum[1][3]
+
+%\subsubsection{Should throw error} % works
+\paragraph{Hello} \lipsum[1][4]
+%\subparagraph{Should throw error} % works
+
+\section{Goodbye world}
+\lipsum[2][1]
+
+\subsection{Primero}
+\lipsum[2][2]
+
+\subsection{Segundo}
+\lipsum[2][3]
+
+\begin{fullwidth}
+\small\itshape\lipsum[1]
+\end{fullwidth}
+
+\end{document}
