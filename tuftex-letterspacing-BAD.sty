@@ -1,0 +1,45 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{tuftex-letterspacing}[2023-06-20 package tuftex-letterspacing]
+
+% BAD. This seems to work ok for pdflatex PDF output but it causes
+% tex4ebook to crash looking for fonts it can't find. 
+% possible fix is to add a nols option and use it when using tex4ebook 
+% as the tufte.css handles the letterspacing anyway. 
+
+% dependencies
+\RequirePackage{textcase} 
+\RequirePackage{letterspace}
+
+% options: none so far 
+% TODO add nols
+
+% The original tufte-common.def had lots of junk to do 
+% different things depending on xetex, pdflatex, soul... 
+% Improved letterspacing of small caps and all-caps text.
+%
+% First, try to use the `microtype' package, if it's available. 
+% Failing that, try to use the `soul' package, if it's available.
+% Failing that, well, I give up.
+
+% except the `soul` package breaks things like tex4ht and doesn't
+% play nice with ebook so i am going to toss it - DE
+
+\DeclareTextFontCommand{\textsmallcaps}{\scshape}
+
+% textcase provides \MakeTextUppercase and \MakeTextLowercase
+%\RequirePackage{textcase} 
+\NewDocumentCommand{\allcapsspacing}{m}{not defined!}
+\NewDocumentCommand{\smallcapsspacing}{m}{not defined!}
+\NewDocumentCommand{\allcaps}{m}{\allcapsspacing{\MakeTextUppercase{#1}}}
+\NewDocumentCommand{\smallcaps}{m}{\smallcapsspacing{\MakeTextLowercase{#1}}}
+
+% letterspace fixes the letterspacing duh
+%\RequirePackage{letterspace}
+\RenewDocumentCommand{\allcapsspacing}{m}{\textls[200]{#1}}
+\RenewDocumentCommand{\smallcapsspacing}{m}{\textls[50]{#1}}
+\RenewDocumentCommand{\allcaps}{m}{\allcapsspacing{\MakeTextUppercase{#1}}}
+\RenewDocumentCommand{\smallcaps}{m}{%
+\smallcapsspacing{\scshape\MakeTextLowercase{#1}}
+} %\smallcaps
+\RenewDocumentCommand{\textsc}{m}{\smallcapsspacing{\textsmallcaps{#1}}}
+
