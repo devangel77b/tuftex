@@ -1,0 +1,99 @@
+\documentclass{article}
+
+\title{/test/floats/appearance/test.tex}
+\author{D.~Evangelista}
+\date{\today}
+
+\usepackage{tuftex-handout}
+\usepackage{tex4ebook}
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+\begin{document}
+\maketitle
+
+\section{Figure testing}
+\subsection{\texttt{figure}}
+Reference to figure~\ref{fig:fig1} works.
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=0.6\columnwidth]{dog2.jpg}
+\end{center}
+\caption{\texttt{figure} seems to work. Labrador retrievers are cute, but this caption should be aligned at the top of the image.}
+\label{fig:fig1}
+\end{figure}
+
+\subsection{\texttt{figure*}}
+Reference to figure~\ref{fig:fig2} works.
+\begin{figure*}[h]
+\begin{center}
+\includegraphics[width=\textwidth]{dog3.jpg}
+\end{center}
+\caption{\texttt{figure*} also seems to work, but the width is not as wide as expected when using textwidth or columnwidth? hmmm.}
+\label{fig:fig2}
+\end{figure*}
+
+\subsection{\texttt{marginfigure}}
+Reference to figure~\ref{fig:fig3} works.
+\begin{marginfigure}
+\begin{center}
+\includegraphics[width=\columnwidth]{dog1.jpg}
+\end{center}
+\caption{\texttt{marginfigure} here. Puppies are cute.}
+\label{fig:fig3}
+\end{marginfigure}
+
+\clearpage
+\section{Table testing}
+\subsection{\texttt{table}}
+Reference to table~\ref{tab:tab1} works.
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+a & b & c & d \\
+\midrule
+e & f & g & h \\
+i & j & k & l \\
+\bottomrule
+\end{tabular}
+\end{center}
+\caption{\texttt{table} seems to work, but caption placement is too low it should be even with the top of the table.}
+\label{tab:tab1}
+\end{table}
+
+\subsection{\texttt{table*}}
+Reference to table~\ref{tab:tab2} works.
+\begin{table*}[h]
+\begin{center}
+\begin{tabular}{lllllll}
+\toprule
+a & b & c & d & 1 & 2 & 3\\
+\midrule
+e & f & g & h & 4 & 5 & 6\\
+i & j & k & l & 7 & 8 & 9\\
+\bottomrule
+\end{tabular}
+\end{center}
+\caption{\texttt{table*} also seems to work?}
+\label{tab:tab2}
+\end{table*}
+
+\subsection{\texttt{margintable}}
+Reference to table~\ref{tab:tab3} works.
+\begin{margintable}
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+a & b & c \\
+\midrule
+d & e & f \\
+g & h & i \\
+\bottomrule
+\end{tabular}
+\end{center}
+\caption{\texttt{margintable} here, seems to work right.}
+\label{tab:tab3}
+\end{margintable}
+
+\end{document}
